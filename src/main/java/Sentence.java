@@ -7,7 +7,7 @@ public class Sentence {
 
 
 
-    public void max(String Str) {
+    private void getTheLongestWorldInSentenceWithLength(String Str) {
 
         int maxCharacters = 0;
         String world="";
@@ -56,7 +56,7 @@ public class Sentence {
 
 
     public static void main(String[] args) {
-        new Sentence().f("   test1   test12   test123   Test1234   htntyntyntynyntntnytynytn ");
+        new Sentence().getTheLongestWorldInSentenceWithLength("   test1   test12   test123   Test1234   1est1235 ");
         // Sentence sentence = new Sentence();
           /*  String s=" test1 test12 test123";
 

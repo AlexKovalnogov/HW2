@@ -7,13 +7,11 @@ public class Sentence {
     public void f(String Str) {
 
         LinkedHashMap<Integer, String> integerStringLinkedHashMap = new LinkedHashMap<Integer, String>();
-        List<String> listOfWorlds = getWorldsFromSentence(Str);
-
+        String sentenseAfterCuttingOddSpaces=cutOddSpacesInSentence(Str);
+        List<String> listOfWorlds = getWorldsFromSentence(sentenseAfterCuttingOddSpaces);
         for (int i = 0; i < listOfWorlds.size() - 1; i++) {
             integerStringLinkedHashMap.put(listOfWorlds.get(i).length(), listOfWorlds.get(i));
         }
-
-
     }
 
     public List<String> getWorldsFromSentence(String Str) {
@@ -36,22 +34,24 @@ public class Sentence {
                 arrayIndexesOfSpaces.add(i);
             }
         }
+        arrayIndexesOfSpaces.add(0, 0);
         arrayIndexesOfSpaces.add(senteceWithSpaces.length());
-        if (arrayIndexesOfSpaces.get(0) != 0) {
-            arrayIndexesOfSpaces.add(0, 0);
-        }
-
         return arrayIndexesOfSpaces;
     }
 
+private  String cutOddSpacesInSentence(String str) {
+
+return   str.trim().replaceAll("\\s{2,}", " ");
+}
+
 
     public static void main(String[] args) {
-        new Sentence().f("test1 test12 test123 Test1234");
+        new Sentence().f("   test1   test12   test123   Test1234");
         // Sentence sentence = new Sentence();
           /*  String s=" test1 test12 test123";
 
             System.out.println(s.indexOf(" "));*/
-
+        ///System.out.println(new Sentence().cutOddSpacesInSentence("   test1      test12    test123    Test1234  "));
 
     }
 

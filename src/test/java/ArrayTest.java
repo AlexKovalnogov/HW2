@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 
 public class ArrayTest {
 
-    Array arr;
+   private Array arr;
 
     @BeforeMethod
     public void setUp() {

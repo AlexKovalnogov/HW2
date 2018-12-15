@@ -1,6 +1,8 @@
 import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Numbers extends Array {
     private Logger logger = Logger.getLogger(Numbers.class);
@@ -56,6 +58,9 @@ public class Numbers extends Array {
         return integersArrayList;
     }
 
+    /**
+     * Task 3
+     */
 
     public int convertBinaryNumberToDecimal(int[] binaryNumberInArray) {
 

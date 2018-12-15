@@ -4,30 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers extends Array {
-    Logger logger = Logger.getLogger(Numbers.class);
-
+    private Logger logger = Logger.getLogger(Numbers.class);
 
     public String checkSameSymbolsInNumber(int threeSignificantNumber) {
         String sameNambers;
-        List<String> listSeparatedNumbers = separateNambersAndWriteDownToListWithTypeString(threeSignificantNumber);
-        List<Integer> integerListOfSeparatedNumbers = convertStringListToInteger(listSeparatedNumbers);
+        if (isNumberContainsThreevalue(threeSignificantNumber)) {
+            List<String> listSeparatedNumbers = separateNumbersAndWriteDownToListWithTypeString(Math.abs(threeSignificantNumber));
+            List<Integer> integerListOfSeparatedNumbers = convertStringListToInteger(listSeparatedNumbers);
 
-        if (integerListOfSeparatedNumbers.get(0) == integerListOfSeparatedNumbers.get(1) &&
-                integerListOfSeparatedNumbers.get(1) == integerListOfSeparatedNumbers.get(2) &&
-                integerListOfSeparatedNumbers.get(0) == integerListOfSeparatedNumbers.get(2)) {
-            sameNambers = " 3 numbers are equal";
-        } else if (integerListOfSeparatedNumbers.get(0) == integerListOfSeparatedNumbers.get(1) ||
-                integerListOfSeparatedNumbers.get(0) == integerListOfSeparatedNumbers.get(2) ||
-                integerListOfSeparatedNumbers.get(1) == integerListOfSeparatedNumbers.get(2)) {
+            if (integerListOfSeparatedNumbers.get(0).equals(integerListOfSeparatedNumbers.get(1)) &&
+                    integerListOfSeparatedNumbers.get(1).equals(integerListOfSeparatedNumbers.get(2)) &&
+                    integerListOfSeparatedNumbers.get(0).equals(integerListOfSeparatedNumbers.get(2))) {
+                sameNambers = " 3 numbers are equal";
+            } else if (integerListOfSeparatedNumbers.get(0).equals(integerListOfSeparatedNumbers.get(1)) ||
+                    integerListOfSeparatedNumbers.get(0).equals(integerListOfSeparatedNumbers.get(2)) ||
+                    integerListOfSeparatedNumbers.get(1).equals(integerListOfSeparatedNumbers.get(2))) {
+                sameNambers = "two numbers are equal";
+            } else {
+                sameNambers = "There aren't same numbers";
+            }
+            return sameNambers;
+        } else
+            return "Number contains less or more that 3 numbers";
 
-            sameNambers = "two numbers are equal";
-        } else {
-            sameNambers = "There aren't same numbers";
-        }
-        return sameNambers;
     }
 
-    private List<String> separateNambersAndWriteDownToListWithTypeString(int threeSignificantNumber) {
+    private boolean isNumberContainsThreevalue(int inputNumber) {
+        if (String.valueOf(inputNumber).length() == 3) {
+            return true;
+        } else return false;
+    }
+
+
+    private List<String> separateNumbersAndWriteDownToListWithTypeString(int threeSignificantNumber) {
 
 
         List<String> strings = new ArrayList<String>();
@@ -49,7 +58,7 @@ public class Numbers extends Array {
     }
 
 
-    public void convertNumberBinaryToDecimal(int[] binaryNumberInArray) {
+    public int convertBinaryNumberToDecimal(int[] binaryNumberInArray) {
 
         int BINARYCONSTANT = 2;
         int decimalValue = 0;
@@ -61,21 +70,11 @@ public class Numbers extends Array {
                 pow--;
             }
             logger.info(decimalValue);
-        }else {
+
+        } else {
             logger.info("Array contains wrong data");
         }
+        return decimalValue;
     }
 
-
-    public static void main(String[] args) {
-
-    /*  String s="123";
-        System.out.println(s.substring(0,1));
-        System.out.println(s.substring(1,2));
-        System.out.print(s.substring(2,3));*/
-        int[] ints = {3, 3, 1, 1};
-        //System.out.print();
-        new Numbers().convertNumberBinaryToDecimal(ints);
-        //System.out.println(new Numbers().check(new Numbers().checkSameSymbolsInNumber(111)));
-    }
 }

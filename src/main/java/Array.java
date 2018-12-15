@@ -1,19 +1,34 @@
 import java.util.Arrays;
+
 import org.apache.log4j.Logger;
 
 public class Array {
     public int[] numbers;
-Logger logger= Logger.getLogger(Array.class);
+    Logger logger = Logger.getLogger(Array.class);
 
     public int[] shiftElementsInArray(int amount, int[] array) {
 
-       for(int i=0;i<amount;i++) {
-            int buffer=array[i];
-        array[i]=array[i+amount];
-        array[i+amount]=buffer;
+        for (int i = 0; i < amount; i++) {
+            int buffer = array[i];
+            array[i] = array[i + amount];
+            array[i + amount] = buffer;
         }
+        return array;
+    }
 
 
+    protected boolean isArrayContainsOnlyBinaryNumbers(int[] binaryArray) {
+        boolean state = false;
+        for (int i = 0; i < binaryArray.length; i++) {
+            if (binaryArray[i] == 1 || binaryArray[i] == 0) {
+                state = true;
+            } else {
+                state = false;
+                break;
+            }
+        }
+        return state;
+    }
 
 
      /*   for (int i = 0; i < amount; i++) {
@@ -23,8 +38,6 @@ Logger logger= Logger.getLogger(Array.class);
             }
             array[0] = temp;
         }*/
-        return array;
-    }
 
 
     public static void main(String[] args) {

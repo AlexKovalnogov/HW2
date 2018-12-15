@@ -1,8 +1,9 @@
 import java.util.Arrays;
+import org.apache.log4j.Logger;
 
 public class Array {
     public int[] numbers;
-
+Logger logger= Logger.getLogger(Array.class);
 
     public int[] shiftElementsInArray(int amount, int[] array) {
 
